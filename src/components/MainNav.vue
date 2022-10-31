@@ -25,6 +25,7 @@
           <profile-image v-if="isLoggedIn" data-test="profile-image" />
           <action-button
             v-else
+            type="primary"
             data-test="login-button"
             text="Sign in"
             @click="loginUser"

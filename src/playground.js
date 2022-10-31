@@ -1,6 +1,8 @@
-export const evenOrOdd = (number) => {
-  if (number % 2 === 0) return "Even";
-  else return "Odd";
+const favFood = "beans";
+
+const goodFoods = {
+  [favFood]: true,
+  newFood: false,
 };
 
-export const multiply = (num1, num2) => num1 * num2;
+console.log(goodFoods);
