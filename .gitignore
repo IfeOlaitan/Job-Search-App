@@ -2,7 +2,7 @@
 node_modules
 /dist
 coverage/
-/tests
+tests/
 jest.config.js
 src/playground.js
 
