@@ -1,0 +1,38 @@
+<template>
+  <button :class="buttonClass">
+    {{ text }}
+  </button>
+</template>
+
+<script>
+export default {
+  name: "ActionButton",
+  props: ["text"],
+  data() {
+    return {
+      primary: true,
+    };
+  },
+  computed: {
+    buttonClass() {
+      return {
+        primary: this.primary,
+      };
+    },
+  },
+  methods: {},
+};
+</script>
+
+<style scoped>
+button {
+  @apply px-5 py-3 rounded font-medium;
+}
+
+.primary {
+  @apply text-white border-0 bg-brand-blue-1 hover:bg-blue-800 hover:shadow-blue;
+}
+
+.secondary {
+}
+</style>
