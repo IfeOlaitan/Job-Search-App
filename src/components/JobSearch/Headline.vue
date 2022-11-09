@@ -1,5 +1,5 @@
 <template>
-  <section>
+  <section class="mb-16">
     <h1
       class="font-bold text-8xl tracking-tighter mb-14"
       data-test="action-phrase"
@@ -9,7 +9,7 @@
       for everyone
     </h1>
     ,
-    <h2 class="text-3xl font-light">Find your next jov at tech careers</h2>
+    <h2 class="text-3xl font-light">Find your next job at tech careers</h2>
   </section>
 </template>
 
