@@ -1,8 +1,6 @@
-const favFood = "beans";
+const axios = require("axios");
 
-const goodFoods = {
-  [favFood]: true,
-  newFood: false,
-};
-
-console.log(goodFoods);
+const url = "http://localhost:3000/jobs";
+axios.get(url).then((response) => {
+  console.log(response);
+});
