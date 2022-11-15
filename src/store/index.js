@@ -1,6 +1,7 @@
 import { createStore } from "vuex";
 
 export const LOGIN_USER = "LOGIN_USER";
+export const RECEIVE_JOBS = "RECEIVE_JOBS";
 
 export const state = () => {
   return {
