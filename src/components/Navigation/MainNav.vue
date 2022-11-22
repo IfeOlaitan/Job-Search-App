@@ -45,7 +45,7 @@
 import { mapMutations, mapState } from "vuex";
 
 //Constants
-import { LOGIN_USER } from "@/store";
+import { LOGIN_USER } from "@/store/constants";
 
 //Components
 import ActionButton from "@/components/Shared/ActionButton.vue";

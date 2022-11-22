@@ -14,7 +14,7 @@
 
 <script>
 import { mapGetters } from "vuex";
-import { FILTERED_JOBS_BY_ORGANIZATIONS } from "@/store";
+import { FILTERED_JOBS_BY_ORGANIZATIONS } from "@/store/constants";
 
 export default {
   // eslint-disable-next-line vue/multi-word-component-names
