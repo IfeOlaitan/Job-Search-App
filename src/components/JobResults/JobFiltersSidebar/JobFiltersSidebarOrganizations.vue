@@ -58,6 +58,7 @@ export default {
     selectOrganization() {
       //console.log(this.selectedOrganizations);
       this.ADD_SELECTED_ORGANIZATIONS(this.selectedOrganizations);
+      this.$router.push({ name: "JobResults" });
     },
   },
 };

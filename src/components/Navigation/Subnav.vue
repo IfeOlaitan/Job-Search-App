@@ -14,15 +14,15 @@
 
 <script>
 import { mapGetters } from "vuex";
-import { FILTERED_JOBS_BY_ORGANIZATIONS } from "@/store/constants";
+import { FILTERED_JOBS } from "@/store/constants";
 
 export default {
   // eslint-disable-next-line vue/multi-word-component-names
   name: "Subnav",
   computed: {
-    ...mapGetters([FILTERED_JOBS_BY_ORGANIZATIONS]),
+    ...mapGetters([FILTERED_JOBS]),
     numberOfJobs() {
-      return this.FILTERED_JOBS_BY_ORGANIZATIONS.length;
+      return this.FILTERED_JOBS.length;
     },
     onJobsResultsPage() {
       return this.$route.name === "JobResults";
