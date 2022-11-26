@@ -30,11 +30,7 @@
 import { mapActions, mapGetters } from "vuex";
 
 //Constants
-import {
-  FETCH_JOBS,
-  FILTERED_JOBS_BY_JOB_TYPES,
-  FILTERED_JOBS,
-} from "@/store/constants";
+import { FETCH_JOBS, FILTERED_JOBS } from "@/store/constants";
 
 //Components
 import JobListing from "@/components/JobResults/JobListing.vue";

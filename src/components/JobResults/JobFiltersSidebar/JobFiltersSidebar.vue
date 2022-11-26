@@ -10,6 +10,7 @@
         </div>
       </div>
 
+      <accordian />
       <job-filters-sidebar-job-types />
       <job-filters-sidebar-organizations />
     </section>
