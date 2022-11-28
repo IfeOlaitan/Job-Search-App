@@ -10,7 +10,7 @@
         </div>
       </div>
 
-      <accordian />
+      <accordian header="Degree" />
       <job-filters-sidebar-job-types />
       <job-filters-sidebar-organizations />
     </section>

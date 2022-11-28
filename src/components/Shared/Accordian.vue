@@ -1,4 +1,3 @@
-/* eslint-disable no-use-before-define */
 <template>
   <div class="py-5 border-b border-solid border-brand-gray-2">
     <div
@@ -17,44 +16,31 @@
   </div>
 </template>
 
-<script setup>
-/* eslint no-use-before-define: 0 */
+<script>
+import { ref, computed } from "vue";
 
-import { ref, defineProps, computed } from "vue";
-const isOpen = ref(false);
-
-defineProps({
-  header: {
-    type: String,
-    required: true,
+export default {
+  // eslint-disable-next-line vue/multi-word-component-names
+  name: "Accordian",
+  props: {
+    header: {
+      type: String,
+      required: true,
+    },
   },
-});
+  setup() {
+    //Data
+    const isOpen = ref(false);
 
-const caretIcon = computed(() => {
-  return isOpen.value ? ["fas", "angle-up"] : ["fas", "angle-down"];
-});
+    //Computed
+    const caretIcon = computed(() => {
+      return isOpen.value ? ["fas", "angle-up"] : ["fas", "angle-down"];
+    });
 
-const open = () => (isOpen.value = !isOpen.value);
+    //Methods
+    const open = () => (isOpen.value = !isOpen.value);
 
-//   props: {
-//   header: {
-//     type: String,
-//       required: true,
-//   },
-// },
-// data() {
-//   return {
-//     isOpen: false,
-//   };
-// },
-// computed: {
-//   caretIcon() {
-//     return this.isOpen ? ["fas", "angle-up"] : ["fas", "angle-down"];
-//   },
-// },
-// methods: {
-//   open() {
-//     this.isOpen = !this.isOpen;
-//   },
-// },
+    return { isOpen, caretIcon, open };
+  },
+};
 </script>
