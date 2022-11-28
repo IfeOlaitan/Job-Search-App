@@ -4,7 +4,7 @@
       <fieldset>
         <ul class="flex flex-wrap">
           <li
-            v-for="organization in UNIQUE_ORGANIZATIONS"
+            v-for="organization in uniqueOrganizations"
             :key="organization"
             class="w-1/2 h-8"
           >
@@ -25,13 +25,13 @@
 </template>
 
 <script>
-import { mapGetters, mapMutations } from "vuex";
+import { ref } from "vue";
+import { useUniqueOrganizations } from "@/store/composables";
+import { useRouter } from "vue-router";
+import { useStore } from "vuex";
 
 //Constants
-import {
-  ADD_SELECTED_ORGANIZATIONS,
-  UNIQUE_ORGANIZATIONS,
-} from "@/store/constants";
+import { ADD_SELECTED_ORGANIZATIONS } from "@/store/constants";
 
 //Components
 import Accordian from "@/components/Shared/Accordian.vue";
@@ -41,25 +41,39 @@ export default {
   components: {
     Accordian,
   },
-  data() {
-    return {
-      selectedOrganizations: [],
-    };
-  },
-  computed: {
-    ...mapGetters([UNIQUE_ORGANIZATIONS]),
-    // UNIQUE_ORGANIZATIONS() {
-    //   return this.$store.getters.UNIQUE_ORGANIZATIONS;
-    // },
-  },
-  methods: {
-    ...mapMutations([ADD_SELECTED_ORGANIZATIONS]),
+  setup() {
+    const store = useStore();
+    const router = useRouter();
 
-    selectOrganization() {
-      //console.log(this.selectedOrganizations);
-      this.ADD_SELECTED_ORGANIZATIONS(this.selectedOrganizations);
-      this.$router.push({ name: "JobResults" });
-    },
+    const selectedOrganizations = ref([]);
+    const uniqueOrganizations = useUniqueOrganizations();
+
+    const selectOrganization = () => {
+      store.commit(ADD_SELECTED_ORGANIZATIONS, selectedOrganizations.value);
+      router.push({ name: "JobResults" });
+    };
+
+    return { selectedOrganizations, uniqueOrganizations, selectOrganization };
   },
+  // data() {
+  //   return {
+  //     selectedOrganizations: [],
+  //   };
+  // },
+  // computed: {
+  //   ...mapGetters([UNIQUE_ORGANIZATIONS]),
+  //   // UNIQUE_ORGANIZATIONS() {
+  //   //   return this.$store.getters.UNIQUE_ORGANIZATIONS;
+  //   // },
+  // },
+  // methods: {
+  //   ...mapMutations([ADD_SELECTED_ORGANIZATIONS]),
+  //
+  //   selectOrganization() {
+  //     //console.log(this.selectedOrganizations);
+  //     this.ADD_SELECTED_ORGANIZATIONS(this.selectedOrganizations);
+  //     this.$router.push({ name: "JobResults" });
+  //   },
+  // },
 };
 </script>

@@ -4,7 +4,7 @@
       <fieldset>
         <ul class="flex flex-wrap">
           <li
-            v-for="jobType in UNIQUE_JOB_TYPES"
+            v-for="jobType in uniqueJobTypes"
             :key="jobType"
             class="w-1/2 h-8"
           >
@@ -14,7 +14,7 @@
               :value="jobType"
               type="checkbox"
               class="mr-3"
-              @change="selectedJobType"
+              @change="selectJobType"
             />
             <label :for="jobType">{{ jobType }}</label>
           </li>
@@ -25,10 +25,14 @@
 </template>
 
 <script>
-import { mapGetters, mapMutations } from "vuex";
+import { useUniqueJobTypes } from "@/store/composables";
+
+import { useStore } from "vuex";
+import { useRouter } from "vue-router";
+import { ref } from "vue";
 
 //Constants
-import { ADD_SELECTED_JOB_TYPES, UNIQUE_JOB_TYPES } from "@/store/constants";
+import { ADD_SELECTED_JOB_TYPES } from "@/store/constants";
 
 //Components
 import Accordian from "@/components/Shared/Accordian.vue";
@@ -38,21 +42,37 @@ export default {
   components: {
     Accordian,
   },
-  data() {
-    return {
-      selectedJobTypes: [],
-    };
-  },
-  computed: {
-    ...mapGetters([UNIQUE_JOB_TYPES]),
-  },
-  methods: {
-    ...mapMutations([ADD_SELECTED_JOB_TYPES]),
+  setup() {
+    const store = useStore();
+    const router = useRouter();
 
-    selectedJobType() {
-      this.ADD_SELECTED_JOB_TYPES(this.selectedJobTypes);
-      this.$router.push({ name: "JobResults" });
-    },
+    const selectedJobTypes = ref([]);
+    const uniqueJobTypes = useUniqueJobTypes();
+
+    const selectJobType = () => {
+      //Mutation
+      store.commit(ADD_SELECTED_JOB_TYPES, selectedJobTypes.value);
+      //Router
+      router.push({ name: "JobResults" });
+    };
+
+    return { selectedJobTypes, uniqueJobTypes, selectJobType };
   },
+  // data() {
+  //   return {
+  //     selectedJobTypes: [],
+  //   };
+  // },
+  // computed: {
+  //   ...mapGetters([UNIQUE_JOB_TYPES]),
+  // },
+  // methods: {
+  //   ...mapMutations([ADD_SELECTED_JOB_TYPES]),
+  //
+  //   selectedJobType() {
+  //     this.ADD_SELECTED_JOB_TYPES(this.selectedJobTypes);
+  //     this.$router.push({ name: "JobResults" });
+  //   },
+  // },
 };
 </script>
