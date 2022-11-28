@@ -26,9 +26,11 @@
 
 <script>
 import { ref } from "vue";
-import { useUniqueOrganizations } from "@/store/composables";
 import { useRouter } from "vue-router";
 import { useStore } from "vuex";
+
+//Composable
+import { useUniqueOrganizations } from "@/store/composables";
 
 //Constants
 import { ADD_SELECTED_ORGANIZATIONS } from "@/store/constants";
