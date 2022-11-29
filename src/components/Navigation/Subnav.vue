@@ -22,7 +22,6 @@ export default {
   setup() {
     const numberOfJobs = useFilteredJobs();
     const onJobsResultsPage = useConfirmRoute("JobResults");
-
     return { onJobsResultsPage, numberOfJobs };
   },
   // computed: {
