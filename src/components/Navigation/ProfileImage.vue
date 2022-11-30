@@ -6,8 +6,10 @@
   />
 </template>
 
-<script>
-export default {
+<script lang="ts">
+import { defineComponent } from "vue";
+
+export default defineComponent({
   name: "ProfileImage",
   data() {
     return {
@@ -15,5 +17,5 @@ export default {
         "https://images.pexels.com/photos/6282045/pexels-photo-6282045.jpeg",
     };
   },
-};
+});
 </script>
