@@ -4,7 +4,7 @@ node_modules
 coverage/
 tests/
 jest.config.js
-src/playground.js
+src/playground.ts
 
 
 # local env files
