@@ -16,10 +16,10 @@
   </div>
 </template>
 
-<script>
-import { ref, computed } from "vue";
+<script lang="ts">
+import { ref, computed, defineComponent } from "vue";
 
-export default {
+export default defineComponent({
   // eslint-disable-next-line vue/multi-word-component-names
   name: "Accordian",
   props: {
@@ -42,5 +42,5 @@ export default {
 
     return { isOpen, caretIcon, open };
   },
-};
+});
 </script>
