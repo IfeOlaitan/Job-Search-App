@@ -26,8 +26,8 @@
   </main>
 </template>
 
-<script>
-import { computed } from "vue";
+<script lang="ts">
+import { computed, defineComponent } from "vue";
 import { onMounted } from "vue";
 
 //Composable
@@ -38,7 +38,7 @@ import { useFilteredJobs, useFetchJobsDispatch } from "@/store/composables";
 //Components
 import JobListing from "@/components/JobResults/JobListing.vue";
 
-export default {
+export default defineComponent({
   name: "JobListings",
   components: {
     JobListing,
@@ -107,5 +107,5 @@ export default {
   // methods: {
   //   ...mapActions([FETCH_JOBS]),
   // },
-};
+});
 </script>
