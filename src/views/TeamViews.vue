@@ -12,12 +12,14 @@
 </template>
 
 <script>
+import { defineComponent } from "vue";
+
 import HeaderContainer from "@/components/Shared/HeaderContainer.vue";
 
-export default {
+export default defineComponent({
   name: "TeamsVue",
   components: {
     HeaderContainer,
   },
-};
+});
 </script>

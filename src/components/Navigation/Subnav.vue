@@ -12,11 +12,13 @@
   </div>
 </template>
 
-<script>
-import useConfirmRoute from "@/composables/useConfirmRoute";
-import { useFilteredJobs } from "@/store/composables";
+<script lang="ts">
+import { defineComponent } from "vue";
 
-export default {
+import { useFilteredJobs } from "@/store/composables";
+import useConfirmRoute from "@/composables/useConfirmRoute";
+
+export default defineComponent({
   // eslint-disable-next-line vue/multi-word-component-names
   name: "Subnav",
   setup() {
@@ -33,5 +35,5 @@ export default {
   //     return this.$route.name === "JobResults";
   //   },
   // },
-};
+});
 </script>
