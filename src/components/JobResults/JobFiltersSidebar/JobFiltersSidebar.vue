@@ -3,28 +3,19 @@
     class="flex flex-col p-4 bg-white border-r border-solid border-brand-gray-1 w-96"
   >
     <section class="pb-5">
-      <div class="flex flex-row justify-between">
-        <h3 class="my-4 text-base font-semibold">What do you want to do?</h3>
-        <div class="flex items-center text-sm">
-          <action-button text="Clear Filters" type="secondary" />
-        </div>
-      </div>
+      <job-fitters-sidebar-prompt />
 
-      <job-filters-sidebar-checkbox-group
-        :mutation="ADD_SELECTED_DEGREES"
-        :unique-values="uniqueDegrees"
-        header="Degrees"
-      />
-      <job-filters-sidebar-checkbox-group
-        :mutation="ADD_SELECTED_JOB_TYPES"
-        :unique-values="uniqueJobTypes"
-        header="Job Types"
-      />
-      <job-filters-sidebar-checkbox-group
-        :mutation="ADD_SELECTED_ORGANIZATIONS"
-        :unique-values="uniqueOrganizations"
-        header="Organizations"
-      />
+      <accordian header="Degrees">
+        <job-filters-sidebar-degrees />
+      </accordian>
+
+      <accordian header="Job Types">
+        <job-filters-sidebar-job-types />
+      </accordian>
+
+      <accordian header="Organizations">
+        <job-filters-sidebar-organizations />
+      </accordian>
     </section>
   </div>
 </template>
@@ -33,42 +24,20 @@
 import { defineComponent } from "vue";
 
 //Components
-import ActionButton from "@/components/Shared/ActionButton.vue";
-import JobFiltersSidebarCheckboxGroup from "@/components/JobResults/JobFiltersSidebar/JobFiltersSidebarCheckboxGroup.vue";
-
-//Composable
-import {
-  useUniqueJobTypes,
-  useUniqueOrganizations,
-  useUniqueDegrees,
-} from "@/store/composables";
-
-//Constants
-import {
-  ADD_SELECTED_JOB_TYPES,
-  ADD_SELECTED_ORGANIZATIONS,
-  ADD_SELECTED_DEGREES,
-} from "@/store/constants";
+import Accordian from "@/components/Shared/Accordian.vue";
+import JobFittersSidebarPrompt from "@/components/JobResults/JobFiltersSidebar/JobFittersSidebarPrompt.vue";
+import JobFiltersSidebarDegrees from "@/components/JobResults/JobFiltersSidebar/JobFiltersSidebarDegrees.vue";
+import JobFiltersSidebarJobTypes from "@/components/JobResults/JobFiltersSidebar/JobFiltersSidebarJobTypes.vue";
+import JobFiltersSidebarOrganizations from "@/components/JobResults/JobFiltersSidebar/JobFiltersSidebarOrganizations.vue";
 
 export default defineComponent({
   name: "JobFiltersSidebar",
   components: {
-    ActionButton,
-    JobFiltersSidebarCheckboxGroup,
-  },
-  setup() {
-    const uniqueJobTypes = useUniqueJobTypes();
-    const uniqueOrganizations = useUniqueOrganizations();
-    const uniqueDegrees = useUniqueDegrees();
-
-    return {
-      uniqueJobTypes,
-      uniqueOrganizations,
-      uniqueDegrees,
-      ADD_SELECTED_JOB_TYPES,
-      ADD_SELECTED_ORGANIZATIONS,
-      ADD_SELECTED_DEGREES,
-    };
+    Accordian,
+    JobFittersSidebarPrompt,
+    JobFiltersSidebarDegrees,
+    JobFiltersSidebarJobTypes,
+    JobFiltersSidebarOrganizations,
   },
 });
 </script>
