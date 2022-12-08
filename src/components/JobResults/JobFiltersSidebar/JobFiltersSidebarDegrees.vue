@@ -1,7 +1,7 @@
 <template>
   <job-filters-sidebar-checkbox-group
-    :mutation="ADD_SELECTED_ORGANIZATIONS"
-    :unique-values="uniqueOrganizations"
+    :mutation="ADD_SELECTED_DEGREES"
+    :unique-values="uniqueDegrees"
   />
 </template>
 
@@ -9,10 +9,10 @@
 import { defineComponent } from "vue";
 
 //Composable
-import { useUniqueOrganizations } from "@/store/composables";
+import { useUniqueDegrees } from "@/store/composables";
 
 //Constants
-import { ADD_SELECTED_ORGANIZATIONS } from "@/store/constants";
+import { ADD_SELECTED_DEGREES } from "@/store/constants";
 
 //Components
 import JobFiltersSidebarCheckboxGroup from "@/components/JobResults/JobFiltersSidebar/JobFiltersSidebarCheckboxGroup.vue";
@@ -23,9 +23,9 @@ export default defineComponent({
     JobFiltersSidebarCheckboxGroup,
   },
   setup() {
-    const uniqueOrganizations = useUniqueOrganizations();
+    const uniqueDegrees = useUniqueDegrees();
 
-    return { uniqueOrganizations, ADD_SELECTED_ORGANIZATIONS };
+    return { uniqueDegrees, ADD_SELECTED_DEGREES };
   },
 });
 </script>

@@ -9,9 +9,7 @@
     </div>
 
     <div v-if="isOpen" class="w-full mt-5">
-      <slot>
-        <p>add something</p>
-      </slot>
+      <slot></slot>
     </div>
   </div>
 </template>
