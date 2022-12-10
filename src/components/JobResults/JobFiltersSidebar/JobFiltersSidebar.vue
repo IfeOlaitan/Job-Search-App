@@ -5,6 +5,10 @@
     <section class="pb-5">
       <job-fitters-sidebar-prompt />
 
+      <accordian header="Skills and Qualifications">
+        <job-filters-sidebar-skills />
+      </accordian>
+
       <accordian header="Degrees">
         <job-filters-sidebar-degrees />
       </accordian>
@@ -21,7 +25,12 @@
 </template>
 
 <script lang="ts">
-import { defineComponent } from "vue";
+import { defineComponent, onMounted } from "vue";
+import { useRoute } from "vue-router";
+import { useStore } from "vuex";
+
+import { key } from "@/store";
+import { UPDATE_SKILLS_SEARCH_TERM } from "@/store/constants";
 
 //Components
 import Accordian from "@/components/Shared/Accordian.vue";
@@ -29,6 +38,7 @@ import JobFittersSidebarPrompt from "@/components/JobResults/JobFiltersSidebar/J
 import JobFiltersSidebarDegrees from "@/components/JobResults/JobFiltersSidebar/JobFiltersSidebarDegrees.vue";
 import JobFiltersSidebarJobTypes from "@/components/JobResults/JobFiltersSidebar/JobFiltersSidebarJobTypes.vue";
 import JobFiltersSidebarOrganizations from "@/components/JobResults/JobFiltersSidebar/JobFiltersSidebarOrganizations.vue";
+import JobFiltersSidebarSkills from "@/components/JobResults/JobFiltersSidebar/JobFiltersSidebarSkills.vue";
 
 export default defineComponent({
   name: "JobFiltersSidebar",
@@ -38,6 +48,17 @@ export default defineComponent({
     JobFiltersSidebarDegrees,
     JobFiltersSidebarJobTypes,
     JobFiltersSidebarOrganizations,
+    JobFiltersSidebarSkills,
+  },
+  setup() {
+    const passSkillsSearchTerm = () => {
+      const route = useRoute();
+      const role = route.query.role || "";
+      const store = useStore(key);
+      store.commit(UPDATE_SKILLS_SEARCH_TERM, role);
+    };
+
+    onMounted(passSkillsSearchTerm);
   },
 });
 </script>
