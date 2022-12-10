@@ -8,4 +8,5 @@ export interface GlobalState {
   selectedOrganizations: string[];
   selectedJobTypes: string[];
   degrees: Degree[];
+  skillsSearchTerm: string;
 }
