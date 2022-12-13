@@ -27,8 +27,6 @@ import { key } from "@/store";
 
 import { CLEAR_USER_JOB_FILTER_SELECTIONS } from "@/store/constants";
 
-//Components
-
 export default defineComponent({
   name: "JobFiltersSidebarOrganizations",
   props: {
